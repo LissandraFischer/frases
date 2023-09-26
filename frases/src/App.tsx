@@ -28,8 +28,8 @@ function App() {
       ]
 
     },
-    {id: 2,
-      nome: "Bom dia",
+    {id: 3,
+      nome: "Boa noite",
       frases:['Boa noite durma bem',
       'Boa noite! Desejo que durma com tranquilidade e serenidade e que a paz te acompanhe.',
       'Tá na hora de desligar o modo ativo e entrar no modo descanso. Durma bem e até mais! Boa noite!' 
@@ -39,8 +39,15 @@ function App() {
   ]
   
   function categoriaEscolhida (index: number){
-    console.log("Posição do item clicado",index)
+    setCategoriaSelecionada(index);
   }
+
+  function gerarFrase(){
+    let numeroAleatorio = Math.floor(Math.random() * todasFrases[categoriaSelecionada].frases.length)
+    setTextoFrase(`"${todasFrases[categoriaSelecionada].frases[numeroAleatorio]}"`)
+
+  }
+
 
   return (
     
@@ -64,7 +71,7 @@ function App() {
           </button>))}
         
        </section>
-       <button className='botao-frase'>Gerar Frases</button>
+       <button className='botao-frase' onClick={gerarFrase}>Gerar Frases</button>
 
        {textoFrase !== '' && <p className='texto-frase'>{textoFrase}</p> }
       </div>
